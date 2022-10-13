@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spring on whathebea</title>
+    <link>https://whathebea.github.io/tags/spring/</link>
+    <description>Recent content in spring on whathebea</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Beatriz Gracia</copyright>
+    <lastBuildDate>Wed, 12 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What I have been studying</title>
+      <link>https://whathebea.github.io/posts/what-studying/</link>
+      <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://whathebea.github.io/posts/what-studying/</guid>
+      <description>I believe that, nowadays, writing a blog is just one way to make myself aware that I am studying a lot. Maybe I will talk a lot about myself, but the I.T field can sometimes be very harsh on you (or me). I am aware that, being an intern, I don&amp;rsquo;t have the same hardships as regular employees, but it can still be hard. I also feel like there are a lot of commas, but to be honest, I never properly learned how to use commas in English and, that being said, Grammarly is correcting it all for me.</description>
+    </item>
+    
+  </channel>
+</rss>

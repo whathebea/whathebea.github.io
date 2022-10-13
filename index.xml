@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>whathebea</title>
+    <link>https://whathebea.github.io/</link>
+    <description>Recent content on whathebea</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Beatriz Gracia</copyright>
+    <lastBuildDate>Wed, 12 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About me</title>
+      <link>https://whathebea.github.io/about/</link>
+      <pubDate>Wed, 12 Oct 2022 13:30:00 +0000</pubDate>
+      
+      <guid>https://whathebea.github.io/about/</guid>
+      <description>About me My name is Beatriz and I am a 22-year-old developer based in Brazil. I am currently an intern at IBM. During my internship, I participated in training in Design Thinking, Problem Solving, and Agile. I did many courses about Java that totaled more than 200 hours. I also had hands-on experience with Android development using Java and the development of REST APIs using Java and Spring Boot. I am still nowhere near the end of my learning journey, so I decided to create a blog so I could post and maybe explain some of the concepts that I learn each day.</description>
+    </item>
+    
+    <item>
+      <title>What I have been studying</title>
+      <link>https://whathebea.github.io/posts/what-studying/</link>
+      <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://whathebea.github.io/posts/what-studying/</guid>
+      <description>I believe that, nowadays, writing a blog is just one way to make myself aware that I am studying a lot. Maybe I will talk a lot about myself, but the I.T field can sometimes be very harsh on you (or me). I am aware that, being an intern, I don&amp;rsquo;t have the same hardships as regular employees, but it can still be hard. I also feel like there are a lot of commas, but to be honest, I never properly learned how to use commas in English and, that being said, Grammarly is correcting it all for me.</description>
+    </item>
+    
+  </channel>
+</rss>
