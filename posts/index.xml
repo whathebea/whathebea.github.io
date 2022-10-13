@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Beatriz Gracia</copyright>
-    <lastBuildDate>Wed, 12 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The basics of angular</title>
+      <link>https://whathebea.github.io/posts/10-13-22-angular/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://whathebea.github.io/posts/10-13-22-angular/</guid>
+      <description>A new day! Today is Thursday, October 13th. I started the day by studying Angular for a couple hours. So, today I am going to talk a bit about Angular.
+Today I learned about: Components Components are apparently a big part of Angular development! You can create them in the cl or create them by hand. Obviously, creating them with the cl command is a lot easier. The command is the following:</description>
+    </item>
+    
     <item>
       <title>What I have been studying</title>
       <link>https://whathebea.github.io/posts/what-studying/</link>

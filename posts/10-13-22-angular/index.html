@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> The basics of angular | whathebea</title>
+  <link rel = 'canonical' href = 'https://whathebea.github.io/posts/10-13-22-angular/'>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="The basics of angular" />
+<meta property="og:description" content="A new day! Today is Thursday, October 13th. I started the day by studying Angular for a couple hours. So, today I am going to talk a bit about Angular.
+Today I learned about: Components Components are apparently a big part of Angular development! You can create them in the cl or create them by hand. Obviously, creating them with the cl command is a lot easier. The command is the following:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whathebea.github.io/posts/10-13-22-angular/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-13T00:00:00+00:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The basics of angular"/>
+<meta name="twitter:description" content="A new day! Today is Thursday, October 13th. I started the day by studying Angular for a couple hours. So, today I am going to talk a bit about Angular.
+Today I learned about: Components Components are apparently a big part of Angular development! You can create them in the cl or create them by hand. Obviously, creating them with the cl command is a lot easier. The command is the following:"/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://whathebea.github.io/css/styles.cf84366404eae91bdb03eb3d19b768f6b64fdba527487e5acc16674443c38969dd4a10d974f7edf5dc53ebec633dcbc8206456380c45f7c749c1d8d3ded6a39e.css" integrity="sha512-z4Q2ZATq6RvbA&#43;s9Gbdo9rZP26UnSH5azBZnREPDiWndShDZdPft9dxT6&#43;xjPcvIIGRWOAxF98dJwdjT3tajng=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://whathebea.github.io/images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://whathebea.github.io/about/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&text=The%20basics%20of%20angular" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&title=The%20basics%20of%20angular" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&is_video=false&description=The%20basics%20of%20angular" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=The%20basics%20of%20angular&body=Check out this article: https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&title=The%20basics%20of%20angular" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&title=The%20basics%20of%20angular" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&name=The%20basics%20of%20angular&description=A%20new%20day%21%20Today%20is%20Thursday%2c%20October%2013th.%20I%20started%20the%20day%20by%20studying%20Angular%20for%20a%20couple%20hours.%20So%2c%20today%20I%20am%20going%20to%20talk%20a%20bit%20about%20Angular.%0aToday%20I%20learned%20about%3a%20Components%20Components%20are%20apparently%20a%20big%20part%20of%20Angular%20development%21%20You%20can%20create%20them%20in%20the%20cl%20or%20create%20them%20by%20hand.%20Obviously%2c%20creating%20them%20with%20the%20cl%20command%20is%20a%20lot%20easier.%20The%20command%20is%20the%20following%3a" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&t=The%20basics%20of%20angular" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#components">Components</a></li>
+            <li><a href="#data-binding">Data Binding</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#hello-beatriz">Hello Beatriz!</a>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#sources">Sources</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        The basics of angular
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2022-10-13 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-10-13</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          2 minute read
+        </div>
+        
+        
+        <div class="article-category">
+            <i class="fas fa-archive"></i>
+            
+            
+            <a class="category-link" href="/categories/tech">tech</a>
+            
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/angular" rel="tag">angular</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <p>A new day! Today is Thursday, October 13th. I started the day by studying Angular for a couple hours. So, today I am going to talk a bit about Angular.<br>
+Today I learned about:  </p>
+<h4 id="components">Components</h4>
+<p>Components are apparently a big part of Angular development! You can create them in the cl or create them by hand. Obviously, creating them with the cl command is a lot easier. The command is the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>ng g c &lt;COMPONENTNAME&gt;
+</span></span></code></pre></div><p>And you should change for the name of your component, clearly.</p>
+<p>This command will create a new folder with 3 files inside:</p>
+<ul>
+<li>name.component.ts</li>
+<li>name.component.html</li>
+<li>name.component.css</li>
+</ul>
+<p>The typescript file contains the class with constructors. The html file contains the template for your component. The css file contains specific css rules for the component.</p>
+<p>In order for Angular to recognize your component as a component you can use the @Component configuration and the following configuration options:</p>
+<ul>
+<li><strong>selector</strong> - It basically tells Angular to create a specific HTML tag for the component like &lt;app-name&gt;&lt;/app-name&gt;</li>
+<li><strong>templateUrl</strong> - It connects to our html template</li>
+<li><strong>providers</strong> - These are classes that help Angular resolve a dependency for the first time.</li>
+</ul>
+<h4 id="data-binding">Data Binding</h4>
+<p>Data Binding is basically the synchronization between the model and the view. There are 3 ways of Data Binding and I am going to briefly talk about each one of them!</p>
+<h5 id="string-interpolation">String Interpolation</h5>
+<p>As the name suggests, you can use a String variable directly in your HTML template.</p>
+<p><em>Example ts code</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>let username: string = &#34;Beatriz&#34;;
+</span></span></code></pre></div><p><em>Example HTML code</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>&lt;h1&gt;Hello {{ username }}!&lt;/h1&gt;
+</span></span></code></pre></div><p>This would result in a output like:</p>
+<h2 id="hello-beatriz">Hello Beatriz!</h2>
+<h5 id="property-binding">Property Binding</h5>
+<p>You assign a value to a target property and that property can use your variables. So, imagine you have an api and that api has an imgPath which you can make a get request that returns an url. How would you use the url that you got from that request in your Angular application? As far as I understood it&rsquo;s like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>&lt;img [src] =&#34;imgPath&#34; alt=&#34;&#34;&gt;
+</span></span></code></pre></div><p>We have square brackets around the source (src) property, which represent property binding. You can also use property binding on the alt property! Imagine you make a get request and then you get imgDescription&hellip; well, it would work exactly as above!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>&lt;img [src]=&#34;imgPath&#34; [alt]=&#34;imgDescription&#34;&gt;
+</span></span></code></pre></div><h5 id="event-binding">Event Binding</h5>
+<p>We use event bindings to respond to DOM events. Like, if we click a button, the button usually does something, doesn&rsquo;t it? That would be a perfect opportunity to use event binding!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>&lt;button type=&#34;button&#34; (click)=&#34;onClickButton()&#34;&gt;Button&lt;/button&gt;
+</span></span></code></pre></div><p>When you click on the button it will activate the onClickButton() function!</p>
+<p>That is it for today!</p>
+<h3 id="sources">Sources</h3>
+<p><a href="https://www.udemy.com/course/the-complete-guide-to-angular-2/">Angular - The Complete Guide 2022 on Udemy</a></p>
+<p><a href="https://angular.io/docs">Angular.io docs</a></p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+  <div class="blog-post-comments">
+    
+      <div id="disqus_thread">
+  <script type="text/javascript">
+    (function() {
+      
+      
+      
+      
+    
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'bea-blog';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="https://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    
+  </div>
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writings</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#components">Components</a></li>
+            <li><a href="#data-binding">Data Binding</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#hello-beatriz">Hello Beatriz!</a>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#sources">Sources</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&text=The%20basics%20of%20angular" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&title=The%20basics%20of%20angular" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&is_video=false&description=The%20basics%20of%20angular" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=The%20basics%20of%20angular&body=Check out this article: https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&title=The%20basics%20of%20angular" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&title=The%20basics%20of%20angular" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&name=The%20basics%20of%20angular&description=A%20new%20day%21%20Today%20is%20Thursday%2c%20October%2013th.%20I%20started%20the%20day%20by%20studying%20Angular%20for%20a%20couple%20hours.%20So%2c%20today%20I%20am%20going%20to%20talk%20a%20bit%20about%20Angular.%0aToday%20I%20learned%20about%3a%20Components%20Components%20are%20apparently%20a%20big%20part%20of%20Angular%20development%21%20You%20can%20create%20them%20in%20the%20cl%20or%20create%20them%20by%20hand.%20Obviously%2c%20creating%20them%20with%20the%20cl%20command%20is%20a%20lot%20easier.%20The%20command%20is%20the%20following%3a" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-13-22-angular%2f&t=The%20basics%20of%20angular" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Beatriz Gracia 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>
