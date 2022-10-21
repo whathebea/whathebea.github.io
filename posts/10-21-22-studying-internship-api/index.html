@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Connecting an API (Java Spring) to an Android application | whathebea</title>
+  <link rel = 'canonical' href = 'https://whathebea.github.io/posts/10-21-22-studying-internship-api/'>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Connecting an API (Java Spring) to an Android application" />
+<meta property="og:description" content="It has been a while since my last post but I swear I haven&rsquo;t given up! It&rsquo;s quite the opposite, actually. I had to do a project for my internship program which was basically creating a Rest API and connecting it to an Android Application. As it turns out, connecting an API to an app is more of a chore than I thought it would be. I hope I can stick with web development." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whathebea.github.io/posts/10-21-22-studying-internship-api/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-21T00:00:00+00:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Connecting an API (Java Spring) to an Android application"/>
+<meta name="twitter:description" content="It has been a while since my last post but I swear I haven&rsquo;t given up! It&rsquo;s quite the opposite, actually. I had to do a project for my internship program which was basically creating a Rest API and connecting it to an Android Application. As it turns out, connecting an API to an app is more of a chore than I thought it would be. I hope I can stick with web development."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://whathebea.github.io/css/styles.cf84366404eae91bdb03eb3d19b768f6b64fdba527487e5acc16674443c38969dd4a10d974f7edf5dc53ebec633dcbc8206456380c45f7c749c1d8d3ded6a39e.css" integrity="sha512-z4Q2ZATq6RvbA&#43;s9Gbdo9rZP26UnSH5azBZnREPDiWndShDZdPft9dxT6&#43;xjPcvIIGRWOAxF98dJwdjT3tajng=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://whathebea.github.io/images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://whathebea.github.io/posts/10-13-22-angular/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&text=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&title=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&is_video=false&description=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application&body=Check out this article: https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&title=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&title=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&name=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application&description=It%20has%20been%20a%20while%20since%20my%20last%20post%20but%20I%20swear%20I%20haven%26rsquo%3bt%20given%20up%21%20It%26rsquo%3bs%20quite%20the%20opposite%2c%20actually.%c2%a0I%20had%20to%20do%20a%20project%20for%20my%20internship%20program%20which%20was%20basically%20creating%20a%20Rest%20API%20and%20connecting%20it%20to%20an%20Android%20Application.%20As%20it%20turns%20out%2c%20connecting%20an%20API%20to%20an%20app%20is%20more%20of%20a%20chore%20than%20I%20thought%20it%20would%20be.%20I%20hope%20I%20can%20stick%20with%20web%20development." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&t=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#androidhttpsimgshieldsiobadgeandroid-3ddc84stylefor-the-badgelogoandroidlogocolorwhite-android"><img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Android"> Android</a>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+            <li><a href="#api-and-service">API and Service</a></li>
+            <li><a href="#activities">Activities</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#springhttpsimgshieldsiobadgespring-236db33fsvgstylefor-the-badgelogospringlogocolorwhite-spring"><img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&amp;logo=spring&amp;logoColor=white" alt="Spring"> Spring</a>
+      <ul>
+        <li><a href="#dependencies">Dependencies</a></li>
+        <li><a href="#overview">Overview</a>
+          <ul>
+            <li><a href="#model">Model</a></li>
+            <li><a href="#controller">Controller</a></li>
+            <li><a href="#the-dto-pattern">The DTO Pattern</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#happy-endings">Happy Endings</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Connecting an API (Java Spring) to an Android application
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2022-10-21 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-10-21</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          7 minute read
+        </div>
+        
+        
+        <div class="article-category">
+            <i class="fas fa-archive"></i>
+            
+            
+            <a class="category-link" href="/categories/tech">tech</a>
+            
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/java" rel="tag">java</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/spring" rel="tag">spring</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/android" rel="tag">android</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/retrofit" rel="tag">retrofit</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <p>It has been a while since my last post but I swear I haven&rsquo;t given up! It&rsquo;s quite the opposite, actually. </p>
+<p>I had to do a project for my internship program which was basically creating a Rest API and connecting it to an Android Application. As it turns out, connecting an API to an app is more of a chore than I thought it would be. I hope I can stick with web development.</p>
+<p>I am not allowed to show all the code because it is stored in enterprise GitHub but I want to talk about everything I did and many some things that I struggled.</p>
+<h2 id="androidhttpsimgshieldsiobadgeandroid-3ddc84stylefor-the-badgelogoandroidlogocolorwhite-android"><img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Android"> Android</h2>
+<p>First: These badges are way too cute for me NOT to use them.</p>
+<p>I created the app on Android Studio and to make the HTTP requests I used RetroFit.</p>
+<h5 id="android-app-structure">Android App Structure</h5>
+<h4 id="api-and-service">API and Service</h4>
+<p>Before we move on to the activities I just want to take a look at the configuration for RetroFit.</p>
+<h5 id="api">API</h5>
+<p>In order to make RetroFit work we have to create an interface with the paths and types of HTTP requests we want to make. Since mine was a pretty simple application there wasn&rsquo;t much to write here.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">interface</span> <span style="color:#50fa7b">YourAPI</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    @GET<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;/api/yourapi&#34;</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    Call<span style="color:#ff79c6">&lt;</span>List<span style="color:#ff79c6">&lt;</span>MyEntity<span style="color:#ff79c6">&gt;&gt;</span> <span style="color:#50fa7b">getAll</span><span style="color:#ff79c6">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    @GET<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;/api/yourapi/{id}&#34;</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    Call<span style="color:#ff79c6">&lt;</span>MyEntity<span style="color:#ff79c6">&gt;</span> <span style="color:#50fa7b">getById</span><span style="color:#ff79c6">(</span>@Path<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;id&#34;</span><span style="color:#ff79c6">)</span> Long id<span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><p>The first get request is to retrieve a list of objects and the second one is to get a single one. You can read more about RetroFit <a href="https://square.github.io/retrofit/">here</a>.</p>
+<h5 id="retrofit-service">RetroFit Service</h5>
+<p>The Service part is pretty much standard. </p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">RetrofitService</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#8be9fd;font-style:italic">private</span> Retrofit retrofit<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#50fa7b">RetrofitService</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>        initializeRetrofit<span style="color:#ff79c6">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">initializeRetrofit</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        Gson gson <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> GsonBuilder<span style="color:#ff79c6">()</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>                <span style="color:#ff79c6">.</span><span style="color:#50fa7b">create</span><span style="color:#ff79c6">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        retrofit <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Retrofit<span style="color:#ff79c6">.</span><span style="color:#50fa7b">Builder</span><span style="color:#ff79c6">()</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>                <span style="color:#ff79c6">.</span><span style="color:#50fa7b">baseUrl</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;your_ip_address&#34;</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>                <span style="color:#ff79c6">.</span><span style="color:#50fa7b">addConverterFactory</span><span style="color:#ff79c6">(</span>GsonConverterFactory<span style="color:#ff79c6">.</span><span style="color:#50fa7b">create</span><span style="color:#ff79c6">(</span>gson<span style="color:#ff79c6">))</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>                <span style="color:#ff79c6">.</span><span style="color:#50fa7b">build</span><span style="color:#ff79c6">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> Retrofit <span style="color:#50fa7b">getRetrofit</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>        <span style="color:#ff79c6">return</span> retrofit<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h4 id="activities">Activities</h4>
+<p>Some of the activities that I created are the following (these are not the actual names but I was trying to be descriptive about what each one is)</p>
+<ul>
+<li>Main Activity</li>
+<li>Splash Activity</li>
+<li>Get all Activity</li>
+<li>Get by ID  Activity</li>
+</ul>
+<h5 id="main-activity">Main Activity</h5>
+<p>This activity was the first one that was created together with the app. It was an empty activity and I added a logo + 2 buttons.</p>
+<p>In Android Studio you can just click and drag components and you also have constraint layouts so, creating a simple screen is not that hard. After you create the screen with the components you have to access the Java Class and add your components so they can do something. Imagine you add a button and you give it the ID myButton, then you would retrieve it like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>Button myButton <span style="color:#ff79c6">=</span> findViewById<span style="color:#ff79c6">(</span>R<span style="color:#ff79c6">.</span><span style="color:#50fa7b">id</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">myButton</span><span style="color:#ff79c6">);</span>
+</span></span></code></pre></div><p>My buttons would redirect to another activity. To do that I had to take the button and use a onClickListener. Android Studio is quite useful because as long as you have an idea of what you are doing it does the job of creating most of the code structures for you.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>myButton<span style="color:#ff79c6">.</span><span style="color:#50fa7b">setOnClickListener</span><span style="color:#ff79c6">(</span><span style="color:#ff79c6">new</span> View<span style="color:#ff79c6">.</span><span style="color:#50fa7b">OnClickListener</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>            @Override
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>           <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">onClick</span><span style="color:#ff79c6">(</span>View view<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>               Intent intent <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Intent<span style="color:#ff79c6">(</span>MainActivity<span style="color:#ff79c6">.</span><span style="color:#50fa7b">this</span><span style="color:#ff79c6">,</span> GetAllActivity<span style="color:#ff79c6">.</span><span style="color:#50fa7b">class</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>               startActivity<span style="color:#ff79c6">(</span>intent<span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>            <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>       <span style="color:#ff79c6">});</span>
+</span></span></code></pre></div><p>So there you have it, that&rsquo;s all you have to do to change from one activity to another. </p>
+<h5 id="splash-activity">Splash Activity</h5>
+<p>The Splash Activity is simply a Splash that shows up when you open the app. I will be honest <em>MINE DIDN&rsquo;T TURN OUT BEAUTIFUL</em>. I can&rsquo;t talk much about Splash Screens because I actually had to search a little bit about them. I found this <a href="https://medium.com/geekculture/implementing-the-perfect-splash-screen-in-android-295de045a8dc">medium article</a> very thorough and helpful. I probably should work a little bit on my design skills…</p>
+<h5 id="get-all-activity">Get All Activity</h5>
+<p>This screen is basically a list with information that was received from the API and so I had to use RecyclerView on it.</p>
+<p><em>What is RecyclerView?</em> you make ask yourself (or me). According to the <a href="https://developer.android.com/develop/ui/views/layout/recyclerview?gclid=EAIaIQobChMI8vOz5u3x-gIVDUJIAB3IZAYeEAAYASAAEgJnufD_BwE&amp;gclsrc=aw.ds">Android Developer Docs</a>:</p>
+<blockquote>
+<p>RecyclerView makes it easy to efficiently display large sets of data. You supply the data and define how each item looks, and the RecyclerView library dynamically creates the elements when they&rsquo;re needed.</p>
+</blockquote>
+<p>And honestly, couldn&rsquo;t have said it better than that myself. In order to use RecyclerView I created an extra layout: the list_item.xml. What is that? Well, it is what ONE item would look like. Take a look at the <a href="https://learn.microsoft.com/pt-br/xamarin/android/user-interface/layouts/recycler-view/">picture below</a> for a second.  </p>
+<p><img src="https://learn.microsoft.com/pt-br/xamarin/android/user-interface/layouts/recycler-view/images/01-recyclerview-example.png" alt="RecyclerView"></p>
+<p>Do you see that the structure for each e-mail is the same and what changes is the content on each one? Well, that is a RecyclerView!</p>
+<p>In this case the list_item.xml would have a name, a subject, the start of a message, how long ago it was sent and a start.</p>
+<p>In order to use a RecyclerView you need an Adapter, you can read more about adapters on <a href="https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter">Android Developer Documentation</a></p>
+<p>And how do we get the information now? Well, now it&rsquo;s finally RetroFit&rsquo;s time to shine!</p>
+<ol>
+<li>Create a method to load information</li>
+<li>Start retrofit service inside the method</li>
+<li>Using our API class with Retrofit</li>
+<li>Make the call</li>
+</ol>
+<p>After you do all of that then you will have something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">loadInfo</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>        RetrofitService retrofitService <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> RetrofitService<span style="color:#ff79c6">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        YourApi yourApi <span style="color:#ff79c6">=</span> retrofitService<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getRetrofit</span><span style="color:#ff79c6">().</span><span style="color:#50fa7b">create</span><span style="color:#ff79c6">(</span>YourApi<span style="color:#ff79c6">.</span><span style="color:#50fa7b">class</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>        yourApi<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getAll</span><span style="color:#ff79c6">()</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>                <span style="color:#ff79c6">.</span><span style="color:#50fa7b">enqueue</span><span style="color:#ff79c6">(</span><span style="color:#ff79c6">new</span> Callback<span style="color:#ff79c6">&lt;</span>List<span style="color:#ff79c6">&lt;</span>MyEntity<span style="color:#ff79c6">&gt;&gt;()</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>                    @Override
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>                    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">onResponse</span><span style="color:#ff79c6">(</span>Call<span style="color:#ff79c6">&lt;</span>List<span style="color:#ff79c6">&lt;</span>MyEntity<span style="color:#ff79c6">&gt;&gt;</span> call<span style="color:#ff79c6">,</span> Response<span style="color:#ff79c6">&lt;</span>List<span style="color:#ff79c6">&lt;</span>MyEntity<span style="color:#ff79c6">&gt;&gt;</span> response<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>                        <span style="color:#6272a4">// what will you do with the response?
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#6272a4"></span>                    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>                    @Override
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>                    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">onFailure</span><span style="color:#ff79c6">(</span>Call<span style="color:#ff79c6">&lt;</span>List<span style="color:#ff79c6">&lt;</span>MyEntity<span style="color:#ff79c6">&gt;&gt;</span> call<span style="color:#ff79c6">,</span> Throwable t<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>                        <span style="color:#6272a4">// what will it do if it fails? e.g: a toast
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#6272a4"></span>                    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>                <span style="color:#ff79c6">});</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h5 id="get-by-id-activity">Get by Id Activity</h5>
+<p>I think you can guess that this activity is pretty similar to the last one except we don&rsquo;t have a RecyclerView. It&rsquo;s just layout with what would be equivalent to a single item from the list.</p>
+<p>The loadInfo method is almost exactly the same but one thing: I won&rsquo;t be calling or receiving a list.</p>
+<h5 id="why-did-i-struggle-with-retrofit">Why did I struggle with RetroFit?</h5>
+<p>Looking back now the answer would be: because I didn&rsquo;t pay enough attention to small things.</p>
+<p>Things like:</p>
+<ul>
+<li>Typos</li>
+<li>Mistaking the path for the requests</li>
+<li>Remembering that when I make the get request by ID I don&rsquo;t get an array of objects as a response, I get a single object</li>
+<li>Importing the wrong class</li>
+<li>Trying to make things much more complicated than what they truly are.</li>
+</ul>
+<h2 id="springhttpsimgshieldsiobadgespring-236db33fsvgstylefor-the-badgelogospringlogocolorwhite-spring"><img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&amp;logo=spring&amp;logoColor=white" alt="Spring"> Spring</h2>
+<p>Spring was a <em>MUCH</em> easier ride than Android. Did I make mistakes? Nope! Where there things I could have done better? Most definitely yes. I made a checklist and I&rsquo;ll leave it here for you people to read it.</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Create Project Structure (Spring Initializr)</li>
+<li><input checked="" disabled="" type="checkbox"> Create Model</li>
+<li><input checked="" disabled="" type="checkbox"> Create Controller</li>
+<li><input checked="" disabled="" type="checkbox"> Service Layer Implementation</li>
+<li><input checked="" disabled="" type="checkbox"> Create Repository to deal with database operations</li>
+<li><input checked="" disabled="" type="checkbox"> Creating Dto and Dto converter</li>
+<li><input checked="" disabled="" type="checkbox"> Unit tests on Controller layer</li>
+<li><input checked="" disabled="" type="checkbox"> Unit tests on Service Layer</li>
+<li><input checked="" disabled="" type="checkbox"> Connect API to MySql database</li>
+</ul>
+<p>An api for big companies probably has much more than this but well, that&rsquo;s what I did.</p>
+<h3 id="dependencies">Dependencies</h3>
+<ul>
+<li>Spring Data JPA</li>
+<li>Spring Web</li>
+<li>Spring Boot Dev Tools</li>
+<li>MySql Driver</li>
+<li>SpringFox Boot Starter</li>
+<li>SpringFox Swagger 2</li>
+<li>SpringFox Swagger UI</li>
+</ul>
+<h3 id="overview">Overview</h3>
+<h4 id="model">Model</h4>
+<p>Here is an example of something the model should look like.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>@Entity
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>@Table<span style="color:#ff79c6">(</span>name<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;YOURAPI&#34;</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">MyEntity</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    @Id
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    @GeneratedValue<span style="color:#ff79c6">(</span>strategy <span style="color:#ff79c6">=</span> GenerationType<span style="color:#ff79c6">.</span><span style="color:#50fa7b">IDENTITY</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#8be9fd;font-style:italic">private</span> Long id<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    @Column<span style="color:#ff79c6">(</span>name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;name&#34;</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#8be9fd;font-style:italic">private</span> String name<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#6272a4">// constructors
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#6272a4"></span>    <span style="color:#6272a4">// getters and setters
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#6272a4"></span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><p>It&rsquo;s pretty self-explanatory:<br>
+The @Entity annotation specifies that the class is an entity and is mapped to a database table. The @Table annotation specifies the name of the database table to be used for mapping. @Id specifies that it is the primary key and @GeneratedValue specifies how it should be generated. Then we have a single @Column which specifies the name of the column.</p>
+<p>After that, you just have your constructors and getters and setters. For my project I had a default constructor (empty) and two others, one with the id field and other without it. The getters and setters are also pretty standard, you can just generate them as you would. (Right Click &gt; Source &gt; Generate Getters and Setters)</p>
+<h4 id="controller">Controller</h4>
+<p>There isn&rsquo;t anything special about the controller just like there wasn&rsquo;t with the model.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>@RestController
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>@RequestMapping<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;/api/yourapi&#34;</span><span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">MyEntityController</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>	@Autowired
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>	<span style="color:#8be9fd;font-style:italic">private</span> MyService myService<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>	@GetMapping
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>	<span style="color:#8be9fd;font-style:italic">public</span> ResponseEntity<span style="color:#ff79c6">&lt;</span>List<span style="color:#ff79c6">&lt;</span>MyEntityDto<span style="color:#ff79c6">&gt;&gt;</span> <span style="color:#50fa7b">getAll</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> ResponseEntity<span style="color:#ff79c6">&lt;&gt;(</span>myService<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getAll</span><span style="color:#ff79c6">(),</span> HttpStatus<span style="color:#ff79c6">.</span><span style="color:#50fa7b">OK</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>	<span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><p>I actually forgot to put the @RestController annotation the first time I wrote the code and guess what? It didn&rsquo;t work. Don&rsquo;t forget your annotations! </p>
+<p>@RequestMapping just maps the url path, you have @Autowired to do dependency injection of the service class and you have a pretty standard get request.</p>
+<h4 id="the-dto-pattern">The DTO Pattern</h4>
+<p>DTO means Data Transfer Object. Is it a must? I am not sure. I mean, if you are just studying and making an api that will possibly never see the sunrise, then yeah, I would guess it&rsquo;s not a must. But as far as I&rsquo;ve read it is an Enterprise application architecture pattern which means it solves problems in large systems. It&rsquo;s probably very interesting to know how it works.</p>
+<p>The best explanation for the DTO pattern that I found is from <a href="https://www.baeldung.com/java-dto-pattern">Baeldung</a> and I definitely would recommend the read!</p>
+<h2 id="happy-endings">Happy Endings</h2>
+<p>The happy ending is that I actually finished my project and can go back to studying Angular and keep finding more stuff to do. I came to the conclusion that I also must practice a little bit more of my designing skills because they are lacking quite a bit.</p>
+<p>Besides that, everything is great! I focused a lot on Android here because my main issues were there and finding the solutions was not as easy as one would expect.</p>
+<p>If you have any questions or want to know more about anything that I post here just contact me!</p>
+<p><a href="https://twitter.com/whathebea">@whathebea</a> on Twitter</p>
+<p><a href="https://br.linkedin.com/in/beatriz-gracia-dos-santos-2762bb21b">Beatriz Gracia</a> on Linkedin</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+  <div class="blog-post-comments">
+    
+      <div id="disqus_thread">
+  <script type="text/javascript">
+    (function() {
+      
+      
+      
+      
+    
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'bea-blog';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="https://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    
+  </div>
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writings</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#androidhttpsimgshieldsiobadgeandroid-3ddc84stylefor-the-badgelogoandroidlogocolorwhite-android"><img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Android"> Android</a>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+            <li><a href="#api-and-service">API and Service</a></li>
+            <li><a href="#activities">Activities</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#springhttpsimgshieldsiobadgespring-236db33fsvgstylefor-the-badgelogospringlogocolorwhite-spring"><img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&amp;logo=spring&amp;logoColor=white" alt="Spring"> Spring</a>
+      <ul>
+        <li><a href="#dependencies">Dependencies</a></li>
+        <li><a href="#overview">Overview</a>
+          <ul>
+            <li><a href="#model">Model</a></li>
+            <li><a href="#controller">Controller</a></li>
+            <li><a href="#the-dto-pattern">The DTO Pattern</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#happy-endings">Happy Endings</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&text=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&title=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&is_video=false&description=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application&body=Check out this article: https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&title=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&title=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&name=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application&description=It%20has%20been%20a%20while%20since%20my%20last%20post%20but%20I%20swear%20I%20haven%26rsquo%3bt%20given%20up%21%20It%26rsquo%3bs%20quite%20the%20opposite%2c%20actually.%c2%a0I%20had%20to%20do%20a%20project%20for%20my%20internship%20program%20which%20was%20basically%20creating%20a%20Rest%20API%20and%20connecting%20it%20to%20an%20Android%20Application.%20As%20it%20turns%20out%2c%20connecting%20an%20API%20to%20an%20app%20is%20more%20of%20a%20chore%20than%20I%20thought%20it%20would%20be.%20I%20hope%20I%20can%20stick%20with%20web%20development." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-21-22-studying-internship-api%2f&t=Connecting%20an%20API%20%28Java%20Spring%29%20to%20an%20Android%20application" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Beatriz Gracia 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

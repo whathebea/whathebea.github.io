@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Beatriz Gracia</copyright>
-    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Connecting an API (Java Spring) to an Android application</title>
+      <link>https://whathebea.github.io/posts/10-21-22-studying-internship-api/</link>
+      <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://whathebea.github.io/posts/10-21-22-studying-internship-api/</guid>
+      <description>It has been a while since my last post but I swear I haven&amp;rsquo;t given up! It&amp;rsquo;s quite the opposite, actually. I had to do a project for my internship program which was basically creating a Rest API and connecting it to an Android Application. As it turns out, connecting an API to an app is more of a chore than I thought it would be. I hope I can stick with web development.</description>
+    </item>
+    
     <item>
       <title>The basics of angular</title>
       <link>https://whathebea.github.io/posts/10-13-22-angular/</link>
