@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Beatriz Gracia</copyright>
-    <lastBuildDate>Fri, 21 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>java</title>
+      <link>https://whathebea.github.io/tags/java/</link>
+      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://whathebea.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spring</title>
+      <link>https://whathebea.github.io/tags/spring/</link>
+      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://whathebea.github.io/tags/spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>https://whathebea.github.io/tags/testing/</link>
+      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://whathebea.github.io/tags/testing/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>android</title>
       <link>https://whathebea.github.io/tags/android/</link>
@@ -18,29 +45,11 @@
     </item>
     
     <item>
-      <title>java</title>
-      <link>https://whathebea.github.io/tags/java/</link>
-      <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://whathebea.github.io/tags/java/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>retrofit</title>
       <link>https://whathebea.github.io/tags/retrofit/</link>
       <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://whathebea.github.io/tags/retrofit/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>spring</title>
-      <link>https://whathebea.github.io/tags/spring/</link>
-      <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://whathebea.github.io/tags/spring/</guid>
       <description></description>
     </item>
     

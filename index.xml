@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Beatriz Gracia</copyright>
-    <lastBuildDate>Fri, 21 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to use Junit and Mockito for unit testing in Java</title>
+      <link>https://whathebea.github.io/posts/10-26-22-using-junit/</link>
+      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://whathebea.github.io/posts/10-26-22-using-junit/</guid>
+      <description>I know today is Sunday but I really felt like writing something. It seems like I can&amp;rsquo;t stop thinking about coding and trying to perfect everything that I am learning. This may be personal but, does anyone else feel this way? Before my internship although I was very dedicated it seems that now I am much more focused. Also, I lost two Valorant matches in a row so I&amp;rsquo;m feeling a bit down.</description>
+    </item>
+    
     <item>
       <title>Connecting an API (Java Spring) to an Android application</title>
       <link>https://whathebea.github.io/posts/10-21-22-studying-internship-api/</link>
