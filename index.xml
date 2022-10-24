@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Beatriz Gracia</copyright>
-    <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>E-commerce website - Planning Phase</title>
+      <link>https://whathebea.github.io/posts/10-24-22-my-next-project/</link>
+      <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://whathebea.github.io/posts/10-24-22-my-next-project/</guid>
+      <description>Hello everyone! Today I spent most of my day studying for AZ-900, I am following a learning path my company offers so that when the time comes I can take the exam and get certified. I am also thinking of creating a project using all the technologies I am currently studying: Angular, Spring, MySQL. I am mostly still planning it, I think building an e-commerce application will be very useful to showcase my skills.</description>
+    </item>
+    
     <item>
       <title>How to use Junit and Mockito for unit testing in Java</title>
       <link>https://whathebea.github.io/posts/10-26-22-using-junit/</link>
