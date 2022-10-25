@@ -7,38 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Beatriz Gracia</copyright>
-    <lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>angular</title>
-      <link>https://whathebea.github.io/tags/angular/</link>
-      <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://whathebea.github.io/tags/angular/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>java</title>
       <link>https://whathebea.github.io/tags/java/</link>
-      <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://whathebea.github.io/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>mysql</title>
-      <link>https://whathebea.github.io/tags/mysql/</link>
-      <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://whathebea.github.io/tags/mysql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>spring</title>
       <link>https://whathebea.github.io/tags/spring/</link>
-      <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://whathebea.github.io/tags/spring/</guid>
       <description></description>
@@ -68,6 +50,15 @@
       <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://whathebea.github.io/tags/retrofit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>angular</title>
+      <link>https://whathebea.github.io/tags/angular/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://whathebea.github.io/tags/angular/</guid>
       <description></description>
     </item>
     
