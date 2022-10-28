@@ -3,30 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://whathebea.github.io/categories/</loc>
-    <lastmod>2022-10-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://whathebea.github.io/posts/10-26-22-using-junit/</loc>
-    <lastmod>2022-10-23T00:00:00+00:00</lastmod>
+    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://whathebea.github.io/tags/java/</loc>
-    <lastmod>2022-10-23T00:00:00+00:00</lastmod>
+    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/tags/java-ee/</loc>
+    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://whathebea.github.io/posts/</loc>
+    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/tags/servlets/</loc>
+    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/posts/10-28-22-servlets-and-jsp/</loc>
+    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/tags/</loc>
+    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/categories/tech/</loc>
+    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/</loc>
+    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/posts/10-26-22-using-junit/</loc>
     <lastmod>2022-10-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://whathebea.github.io/tags/spring/</loc>
     <lastmod>2022-10-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://whathebea.github.io/tags/</loc>
-    <lastmod>2022-10-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://whathebea.github.io/categories/tech/</loc>
-    <lastmod>2022-10-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://whathebea.github.io/tags/testing/</loc>
-    <lastmod>2022-10-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://whathebea.github.io/</loc>
     <lastmod>2022-10-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://whathebea.github.io/tags/android/</loc>
