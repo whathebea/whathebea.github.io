@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jenkins on whathebea</title>
+    <link>https://whathebea.github.io/tags/jenkins/</link>
+    <description>Recent content in jenkins on whathebea</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Beatriz Gracia</copyright>
+    <lastBuildDate>Mon, 31 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://whathebea.github.io/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A little bit about CI/CD and Jenkins</title>
+      <link>https://whathebea.github.io/posts/10-31-22-ci-cd-jenkins/</link>
+      <pubDate>Mon, 31 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://whathebea.github.io/posts/10-31-22-ci-cd-jenkins/</guid>
+      <description>I don&amp;rsquo;t really feel like making a huge introduction to this post. I will just talk a little bit about what I studied today. If you have already read Jenkins documentation you can probably skip this, I just wanted to explain it to myself.
+What is CI/CD? CI CI stands for Continuous Integration and for that you basically merge your code into a main branch as often as possible. This way it&amp;rsquo;s easier to detect bugs and you can fix them before they get to production.</description>
+    </item>
+    
+  </channel>
+</rss>

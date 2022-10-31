@@ -2,8 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://whathebea.github.io/posts/10-31-22-ci-cd-jenkins/</loc>
+    <lastmod>2022-10-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://whathebea.github.io/categories/</loc>
-    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
+    <lastmod>2022-10-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/tags/jenkins/</loc>
+    <lastmod>2022-10-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/posts/</loc>
+    <lastmod>2022-10-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/tags/</loc>
+    <lastmod>2022-10-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/categories/tech/</loc>
+    <lastmod>2022-10-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/</loc>
+    <lastmod>2022-10-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://whathebea.github.io/tags/java/</loc>
     <lastmod>2022-10-28T00:00:00+00:00</lastmod>
@@ -11,22 +29,10 @@
     <loc>https://whathebea.github.io/tags/java-ee/</loc>
     <lastmod>2022-10-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://whathebea.github.io/posts/</loc>
-    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://whathebea.github.io/tags/servlets/</loc>
     <lastmod>2022-10-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://whathebea.github.io/posts/10-28-22-servlets-and-jsp/</loc>
-    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://whathebea.github.io/tags/</loc>
-    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://whathebea.github.io/categories/tech/</loc>
-    <lastmod>2022-10-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://whathebea.github.io/</loc>
     <lastmod>2022-10-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://whathebea.github.io/posts/10-26-22-using-junit/</loc>
@@ -58,5 +64,7 @@
   </url><url>
     <loc>https://whathebea.github.io/posts/what-studying/</loc>
     <lastmod>2022-10-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whathebea.github.io/tags/ci/cd/</loc>
   </url>
 </urlset>

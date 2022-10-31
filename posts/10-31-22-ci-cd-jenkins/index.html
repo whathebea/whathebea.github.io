@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> A little bit about CI/CD and Jenkins | whathebea</title>
+  <link rel = 'canonical' href = 'https://whathebea.github.io/posts/10-31-22-ci-cd-jenkins/'>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="A little bit about CI/CD and Jenkins" />
+<meta property="og:description" content="I don&rsquo;t really feel like making a huge introduction to this post. I will just talk a little bit about what I studied today. If you have already read Jenkins documentation you can probably skip this, I just wanted to explain it to myself.
+What is CI/CD? CI CI stands for Continuous Integration and for that you basically merge your code into a main branch as often as possible. This way it&rsquo;s easier to detect bugs and you can fix them before they get to production." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whathebea.github.io/posts/10-31-22-ci-cd-jenkins/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-31T00:00:00+00:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A little bit about CI/CD and Jenkins"/>
+<meta name="twitter:description" content="I don&rsquo;t really feel like making a huge introduction to this post. I will just talk a little bit about what I studied today. If you have already read Jenkins documentation you can probably skip this, I just wanted to explain it to myself.
+What is CI/CD? CI CI stands for Continuous Integration and for that you basically merge your code into a main branch as often as possible. This way it&rsquo;s easier to detect bugs and you can fix them before they get to production."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://whathebea.github.io/css/styles.cf84366404eae91bdb03eb3d19b768f6b64fdba527487e5acc16674443c38969dd4a10d974f7edf5dc53ebec633dcbc8206456380c45f7c749c1d8d3ded6a39e.css" integrity="sha512-z4Q2ZATq6RvbA&#43;s9Gbdo9rZP26UnSH5azBZnREPDiWndShDZdPft9dxT6&#43;xjPcvIIGRWOAxF98dJwdjT3tajng=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://whathebea.github.io/images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://whathebea.github.io/posts/10-28-22-servlets-and-jsp/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&text=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&title=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&is_video=false&description=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins&body=Check out this article: https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&title=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&title=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&name=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins&description=I%20don%26rsquo%3bt%20really%20feel%20like%20making%20a%20huge%20introduction%20to%20this%20post.%20I%20will%20just%20talk%20a%20little%20bit%20about%20what%20I%20studied%20today.%20If%20you%20have%20already%20read%20Jenkins%20documentation%20you%20can%20probably%20skip%20this%2c%20I%20just%20wanted%20to%20explain%20it%20to%20myself.%0aWhat%20is%20CI%2fCD%3f%20CI%20CI%20stands%20for%20Continuous%20Integration%20and%20for%20that%20you%20basically%20merge%20your%20code%20into%20a%20main%20branch%20as%20often%20as%20possible.%20This%20way%20it%26rsquo%3bs%20easier%20to%20detect%20bugs%20and%20you%20can%20fix%20them%20before%20they%20get%20to%20production." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&t=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ci">CI</a></li>
+    <li><a href="#cd">CD</a></li>
+    <li><a href="#how-is-cicd-done">How is CI/CD done?</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#how-to-install-jenkins">How to install Jenkins?</a></li>
+    <li><a href="#how-to-use-jenkins">How to use Jenkins?</a></li>
+    <li><a href="#what-are-the-main-components-of-jenkins">What are the main components of Jenkins?</a>
+      <ul>
+        <li><a href="#jobs">Jobs</a>
+          <ul>
+            <li><a href="#freestyle-projects">Freestyle Projects</a></li>
+            <li><a href="#pipeline">Pipeline</a></li>
+          </ul>
+        </li>
+        <li><a href="#views">Views</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#why-use-jenkins-and-docker-together">Why use Jenkins and Docker together?</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        A little bit about CI/CD and Jenkins
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2022-10-31 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-10-31</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          4 minute read
+        </div>
+        
+        
+        <div class="article-category">
+            <i class="fas fa-archive"></i>
+            
+            
+            <a class="category-link" href="/categories/tech">tech</a>
+            
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/ci/cd" rel="tag">ci/cd</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/jenkins" rel="tag">jenkins</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <p>I don&rsquo;t really feel like making a huge introduction to this post. I will just talk a little bit about what I studied today. If you have already read Jenkins documentation you can probably skip this, I just wanted to explain it to myself.</p>
+<h1 id="what-is-cicd">What is CI/CD?</h1>
+<h2 id="ci">CI</h2>
+<p>CI stands for Continuous Integration and for that you basically merge your code into a main branch as often as possible. This way it&rsquo;s easier to detect bugs and you can fix them before they get to production.</p>
+<h2 id="cd">CD</h2>
+<p>CD stands for Continuous Delivery and that is you deploy your code to production as often as possible. This way you can deliver new features to your users as soon as possible. This is also known as Continuous Deployment.</p>
+<h2 id="how-is-cicd-done">How is CI/CD done?</h2>
+<p>There are a lot of tools that can help you with CI/CD. The most popular ones are Jenkins, GitLab CI, and GitHub Actions. I will be talking about Jenkins in this post.</p>
+<h1 id="jenkins">Jenkins?</h1>
+<p>Jenkins is an open-source automation server that can help you with CI/CD. It is written in Java and it is very extensible. You can install plugins to do almost anything you want. It is also very easy to use and it has a very good documentation.</p>
+<p>You can take a look and download Jenkins <a href="https://www.jenkins.io/download/">here</a>.</p>
+<h2 id="how-to-install-jenkins">How to install Jenkins?</h2>
+<p>You can download the installer <a href="https://www.jenkins.io/download/">here</a>. After you download it, you can just run it and follow the steps. It&rsquo;s very easy.</p>
+<h2 id="how-to-use-jenkins">How to use Jenkins?</h2>
+<p>After you install Jenkins, you can access it by going to <code>localhost:8080</code> in your browser. You will be asked to enter the password that was generated when you installed Jenkins. You can find it in the file <code>C:\ProgramData\Jenkins\secrets\initialAdminPassword</code>. After you enter the password, you will be asked to install some plugins. You can install the ones you want, but I recommend installing the suggested ones. After you install the plugins, you will be asked to create an admin user. After you create the admin user, you will be redirected to the Jenkins dashboard.</p>
+<h2 id="what-are-the-main-components-of-jenkins">What are the main components of Jenkins?</h2>
+<h3 id="jobs">Jobs</h3>
+<p>Jobs are the main component of Jenkins. They are basically a set of steps that you want to run. You can create jobs by going to <code>New Item</code> in the Jenkins dashboard. You can choose between a lot of different types of jobs. The most common ones are Freestyle Projects, Pipeline, and Multibranch Pipeline. I will be talking about Freestyle Projects and Pipeline.</p>
+<h4 id="freestyle-projects">Freestyle Projects</h4>
+<p>Freestyle Projects are the most basic type of job. You can create them by going to <code>New Item</code> in the Jenkins dashboard and choosing <code>Freestyle Project</code>. After you create the job, you can add steps to it. You can add steps by going to <code>Build</code> -&gt; <code>Add build step</code> -&gt; <code>Execute Windows batch command</code>. You can add as many steps as you want. You can also add parameters to the job. You can add parameters by going to <code>Build</code> -&gt; <code>Add parameter</code> -&gt; <code>String Parameter</code>. You can add as many parameters as you want. You can also add a post-build action. You can add a post-build action by going to <code>Post-build Actions</code> -&gt; <code>Add post-build action</code> -&gt; <code>Archive the artifacts</code>. You can add as many post-build actions as you want.</p>
+<h4 id="pipeline">Pipeline</h4>
+<p>Pipeline is a more advanced type of job. You can create them by going to <code>New Item</code> in the Jenkins dashboard and choosing <code>Pipeline</code>. After you create the job, you can add a pipeline script. You can add a pipeline script by going to <code>Pipeline</code> -&gt; <code>Definition</code> -&gt; <code>Pipeline script</code>. You can add a pipeline script by writing it in the text box or by uploading a file. You can also add parameters to the job. You can add parameters by going to <code>Pipeline</code> -&gt; <code>Definition</code> -&gt; <code>Pipeline script</code> -&gt; <code>Parameters</code>. You can add as many parameters as you want. You can also add a post-build action. You can add a post-build action by going to <code>Post-build Actions</code> -&gt; <code>Add post-build action</code> -&gt; <code>Archive the artifacts</code>. You can add as many post-build actions as you want.</p>
+<h3 id="views">Views</h3>
+<p>Views are basically a way to organize your jobs. You can create views by going to <code>New View</code> in the Jenkins dashboard. You can choose between a lot of different types of views. The most common ones are List View and My View. I will be talking about List View.</p>
+<h1 id="jenkins-and-docker">Jenkins and Docker</h1>
+<p>The most common way to use Jenkins is by using Docker. You can use Docker to run Jenkins in a container. You can take a look at the official Docker image <a href="https://hub.docker.com/r/jenkins/jenkins">here</a>.</p>
+<h2 id="why-use-jenkins-and-docker-together">Why use Jenkins and Docker together?</h2>
+<p>The main reason would be: it&rsquo;s easy. You can just run Jenkins in a container and you don&rsquo;t have to install it on your machine. You can also use Docker to run your jobs in containers. You can also use Docker to run your tests in containers. You can also use Docker to run your application in containers.
+Jenkins has a tutorial on how to use Jenkins and Docker on a Java project <a href="https://www.jenkins.io/doc/tutorials/build-a-java-app-with-maven/">here</a>.</p>
+<h1 id="resources">Resources</h1>
+<ul>
+<li><a href="https://www.jenkins.io/">Jenkins</a></li>
+<li><a href="https://www.jenkins.io/doc/book/installing/docker/">Jenkins and Docker</a></li>
+<li><a href="https://www.jenkins.io/doc/tutorials/build-a-java-app-with-maven/">Jenkins and Docker on a Java project</a></li>
+</ul>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+  <div class="blog-post-comments">
+    
+      <div id="disqus_thread">
+  <script type="text/javascript">
+    (function() {
+      
+      
+      
+      
+    
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'bea-blog';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="https://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+    
+  </div>
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writings</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ci">CI</a></li>
+    <li><a href="#cd">CD</a></li>
+    <li><a href="#how-is-cicd-done">How is CI/CD done?</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#how-to-install-jenkins">How to install Jenkins?</a></li>
+    <li><a href="#how-to-use-jenkins">How to use Jenkins?</a></li>
+    <li><a href="#what-are-the-main-components-of-jenkins">What are the main components of Jenkins?</a>
+      <ul>
+        <li><a href="#jobs">Jobs</a>
+          <ul>
+            <li><a href="#freestyle-projects">Freestyle Projects</a></li>
+            <li><a href="#pipeline">Pipeline</a></li>
+          </ul>
+        </li>
+        <li><a href="#views">Views</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#why-use-jenkins-and-docker-together">Why use Jenkins and Docker together?</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&text=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&title=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&is_video=false&description=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins&body=Check out this article: https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&title=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&title=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&name=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins&description=I%20don%26rsquo%3bt%20really%20feel%20like%20making%20a%20huge%20introduction%20to%20this%20post.%20I%20will%20just%20talk%20a%20little%20bit%20about%20what%20I%20studied%20today.%20If%20you%20have%20already%20read%20Jenkins%20documentation%20you%20can%20probably%20skip%20this%2c%20I%20just%20wanted%20to%20explain%20it%20to%20myself.%0aWhat%20is%20CI%2fCD%3f%20CI%20CI%20stands%20for%20Continuous%20Integration%20and%20for%20that%20you%20basically%20merge%20your%20code%20into%20a%20main%20branch%20as%20often%20as%20possible.%20This%20way%20it%26rsquo%3bs%20easier%20to%20detect%20bugs%20and%20you%20can%20fix%20them%20before%20they%20get%20to%20production." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwhathebea.github.io%2fposts%2f10-31-22-ci-cd-jenkins%2f&t=A%20little%20bit%20about%20CI%2fCD%20and%20Jenkins" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Beatriz Gracia 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>
